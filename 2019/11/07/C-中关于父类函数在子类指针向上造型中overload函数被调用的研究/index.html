@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C++中关于父类函数在子类指针向上造型中overload函数被调用的研究 | NgAgo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究 首先看一个现象两个类1234567class A&amp;#123;	public:		A():i(0）&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::A()&amp;quot;&amp;lt;&amp;lt;endl;&amp;#125;        void f()&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::f()&amp;quot;&amp;lt;&amp;lt;">
+  <meta name="description" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6&#x2F;index.html">
 <meta property="og:site_name" content="NgAgo">
-<meta property="og:description" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究 首先看一个现象两个类1234567class A&amp;#123;	public:		A():i(0）&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::A()&amp;quot;&amp;lt;&amp;lt;endl;&amp;#125;        void f()&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::f()&amp;quot;&amp;lt;&amp;lt;">
+<meta property="og:description" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-07T02:16:27.332Z">
+<meta property="og:updated_time" content="2019-11-07T11:25:53.497Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="NgAgo" type="application/atom+xml">
@@ -172,7 +172,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-中关于父类函数在子类指针向上造型中overload函数被调用的研究"><a href="#C-中关于父类函数在子类指针向上造型中overload函数被调用的研究" class="headerlink" title="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究"></a>C++中关于父类函数在子类指针向上造型中overload函数被调用的研究</h1><hr>
+        <h1 id="C-中关于父类函数在子类指针向上造型中overload函数被调用的研究"><a href="#C-中关于父类函数在子类指针向上造型中overload函数被调用的研究" class="headerlink" title="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究"></a>C++中关于父类函数在子类指针向上造型中overload函数被调用的研究</h1><a id="more"></a>
+<hr>
 <h2 id="首先看一个现象"><a href="#首先看一个现象" class="headerlink" title="首先看一个现象"></a>首先看一个现象</h2><h3 id="两个类"><a href="#两个类" class="headerlink" title="两个类"></a>两个类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">	public:</span><br><span class="line">		A():i(0）&#123;cout&lt;&lt;&quot;A::A()&quot;&lt;&lt;endl;&#125;</span><br><span class="line">        void f()&#123;cout&lt;&lt;&quot;A::f()&quot;&lt;&lt;endl;&#125;</span><br><span class="line">		int i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class B:public A&#123;</span><br><span class="line">	public:</span><br><span class="line">	int j;</span><br><span class="line">	B():&#123;cout&lt;&lt;&quot;B::B()&quot;&lt;&lt;endl;&#125;</span><br><span class="line">	void f()&#123;cout&lt;&lt;&quot;B::f()&quot;&lt;&lt;j&lt;&lt;endl;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -282,16 +283,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2019/11/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
