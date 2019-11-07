@@ -6,14 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇博客文章 | NgAgo</title>
+  <title>C++中关于父类函数在子类指针向上造型中overload函数被调用的研究 | NgAgo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客文章">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0&#x2F;index.html">
+  <meta name="description" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究 首先看一个现象两个类1234567class A&amp;#123;	public:		A():i(0）&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::A()&amp;quot;&amp;lt;&amp;lt;endl;&amp;#125;        void f()&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::f()&amp;quot;&amp;lt;&amp;lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6&#x2F;index.html">
 <meta property="og:site_name" content="NgAgo">
+<meta property="og:description" content="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究 首先看一个现象两个类1234567class A&amp;#123;	public:		A():i(0）&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::A()&amp;quot;&amp;lt;&amp;lt;endl;&amp;#125;        void f()&amp;#123;cout&amp;lt;&amp;lt;&amp;quot;A::f()&amp;quot;&amp;lt;&amp;lt;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-04T13:32:05.535Z">
+<meta property="og:updated_time" content="2019-11-07T02:16:27.332Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="NgAgo" type="application/atom+xml">
@@ -85,8 +87,6 @@
 		        
 					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
-					<a class="qq" target="_blank" href="/1577903327" title="qq"><i class="icon-qq"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -128,8 +128,6 @@
 			        
 						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
-						<a class="qq" target="_blank" href="/1577903327" title="qq"><i class="icon-qq"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -154,27 +152,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇博客文章" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C-中关于父类函数在子类指针向上造型中overload函数被调用的研究" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客文章
+      C++中关于父类函数在子类指针向上造型中overload函数被调用的研究
     </h1>
   
 
         
-        <a href="/2019/11/04/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2019-11-04T13:32:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
+        <a href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/" class="archive-article-date">
+  	<time datetime="2019-11-07T02:15:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="C-中关于父类函数在子类指针向上造型中overload函数被调用的研究"><a href="#C-中关于父类函数在子类指针向上造型中overload函数被调用的研究" class="headerlink" title="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究"></a>C++中关于父类函数在子类指针向上造型中overload函数被调用的研究</h1><hr>
+<h2 id="首先看一个现象"><a href="#首先看一个现象" class="headerlink" title="首先看一个现象"></a>首先看一个现象</h2><h3 id="两个类"><a href="#两个类" class="headerlink" title="两个类"></a>两个类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">	public:</span><br><span class="line">		A():i(0）&#123;cout&lt;&lt;&quot;A::A()&quot;&lt;&lt;endl;&#125;</span><br><span class="line">        void f()&#123;cout&lt;&lt;&quot;A::f()&quot;&lt;&lt;endl;&#125;</span><br><span class="line">		int i;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class B:public A&#123;</span><br><span class="line">	public:</span><br><span class="line">	int j;</span><br><span class="line">	B():&#123;cout&lt;&lt;&quot;B::B()&quot;&lt;&lt;endl;&#125;</span><br><span class="line">	void f()&#123;cout&lt;&lt;&quot;B::f()&quot;&lt;&lt;j&lt;&lt;endl;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int mian()</span><br><span class="line">&#123;</span><br><span class="line">	A a;</span><br><span class="line">	B b;</span><br><span class="line">	A *p=&amp;b;</span><br><span class="line">	cout&lt;&lt;&quot;p:&quot;&lt;&lt;p&lt;&lt;endl;	</span><br><span class="line">	p-&gt;f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PS:这里两个类一个A为B的父类，main函数中做的是B类的地址传给A类的指针（向上造型：upcast），然后通过这个指针调用f()函数。</p>
+<p>What I want to do ?</p>
+<p>这个地方有个问题就是我通过这个指针调用的<code>f（）</code>是A的还是B的？<br>因为这里的<code>f（）</code>是<code>overload</code>的。<br>这里就是想知道调用的那个？看运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A::A()</span><br></pre></td></tr></table></figure>
+<p>这里可以看出调用的是A类的函数</p>
+<h2 id="那么this指针是不是指向对象b的呢？如果是那A类的f（）是否可以操作b中的成员呢？"><a href="#那么this指针是不是指向对象b的呢？如果是那A类的f（）是否可以操作b中的成员呢？" class="headerlink" title="那么this指针是不是指向对象b的呢？如果是那A类的f（）是否可以操作b中的成员呢？"></a>那么this指针是不是指向对象b的呢？如果是那A类的f（）是否可以操作b中的成员呢？</h2><p>修改一下程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">class A&#123;</span><br><span class="line">	public:</span><br><span class="line">		A():i(0)&#123;&#125;</span><br><span class="line">		void f()&#123;int *p =&amp;i;cout&lt;&lt;&quot;A::f()&quot;&lt;&lt;*p&lt;&lt;&quot; &quot;&lt;&lt;&quot;this:&quot;&lt;&lt;this&lt;&lt;endl;&#125;</span><br><span class="line">        </span><br><span class="line">		int i;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class B:public A&#123;</span><br><span class="line">	public:</span><br><span class="line">	int j;</span><br><span class="line">	B()&#123;i=10;&#125;</span><br><span class="line">	public:	void f()&#123;cout&lt;&lt;&quot;B::f()&quot;&lt;&lt;endl;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main()</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">	A a;</span><br><span class="line">	B b;</span><br><span class="line">	A *p=&amp;b;</span><br><span class="line">    cout&lt;&lt;&quot;p:&quot;&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">	p-&gt;f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>A::f()</code>中创造一个指针，指向this指向的对象的成员变量“<code>i</code> ”，为了区别a对象里面的“ i ”我们在<code>B::B()</code>里让<code>i=10;</code><br>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p:0x7fffc2f06ccc</span><br><span class="line">A::f()10 this:0x7fffc2f06ccc</span><br></pre></td></tr></table></figure>
+<p>可见<code>this</code>指向了<code>a</code>并且A::f()是作用在a上了。</p>
+<p>这也说明了this这个指针不能绝对的叫”自引用指针“，毕竟在B类里面没有<code>A::f()</code>（overlode）。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><hr>
+<p>两个类中在子类和父类中如果有overlode的现象通过<code>upcasting</code>的一个指针调用的<code>overload</code>函数，是调用其父类中那个函数，不是调用子类的函数，如果想调用子类的函数可以通过<code>对象.f（）</code>的形式调用或者利用多态性，在每个<code>overload</code>的函数前面加<code>virtual</code>关键字然后用<code>upcasting</code>的指针来调用。并且这种二元的关系可以推广到多元的关系，读者可以自行证明，由于篇幅过长这里就不做赘述了。</p>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>多态的意义就是让同一个动作不同的派生类可能细节上不同或者算法上不同，所以就让类本身去完成，而程序员只关心到底是谁而已。所以在多态中合理的利用<code>upcast</code>和<code>virtual</code>是很关键的。</p>
+
       
 
       
@@ -253,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/04/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/" alt="微信分享二维码">
     </div>
 </div>
 
