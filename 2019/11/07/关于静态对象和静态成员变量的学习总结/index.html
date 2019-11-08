@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | NgAgo</title>
+  <title>关于静态对象和静态成员的学习总结 | NgAgo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="NgAgo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="静态学习总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于静态对象和静态成员的学习总结">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93&#x2F;index.html">
 <meta property="og:site_name" content="NgAgo">
+<meta property="og:description" content="静态学习总结">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-07T14:32:20.002Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="NgAgo" type="application/atom+xml">
@@ -143,76 +146,152 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-关于静态对象和静态成员变量的学习总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      关于静态对象和静态成员的学习总结
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="archive-article-date">
+
+        
+        <a href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="archive-article-date">
   	<time datetime="2019-11-07T14:16:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">关于静态对象和静态成员的学习总结</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="静态学习总结"><a href="#静态学习总结" class="headerlink" title="静态学习总结"></a>静态学习总结</h1><a id="more"></a>
+<p>被<code>static</code>定义变量就是全区变量只是全局变量的scope是在整个程序的，static的变量的scope是在“函数”，“类”中，仅仅只是scope不同罢了。</p>
+<p>1.制造一个静态对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">    void f();</span><br><span class="line">    private:</span><br><span class="line">    int a;</span><br><span class="line">&#125;;</span><br><span class="line">static A a;</span><br></pre></td></tr></table></figure>
+<p>这里<code>static A a</code> 是建立在全区中的一个变量，并且构造是在main函数之前完成的，其空间是在link的时候分配好了，析构则是在程序结束的时候执行。</p>
+<p>在一个.cpp文件中有多个全局对象，他们的初始化是不知道先后顺序的，如果初始化之间是有依赖，并且在多个.cpp文件里面，这样是无法进行初始化，编译器做不到。要么相互之间不要有依赖，要么吧所有依赖的初始化全部放在同一个文件里面。或者像java一样没有全局变量不设置静态对象。</p>
+<p>2.静态成员</p>
+<ul>
+<li>静态成员变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">    void f();</span><br><span class="line">    private:</span><br><span class="line">    static int a;</span><br><span class="line">&#125;;</span><br><span class="line">A::a=10;</span><br></pre></td></tr></table></figure>
+<p>我们只能在类外面对这个静态变量做定义不能在构造函数中或者在initializer list中做初始化，前者因为在类只是在声明，只是告诉编译器有一个变量 a 是静态变量而具体的空间是没有被分配的，而定义只能在类外面完成，对隐式声明也是如此（也是在类里面）。这就如同<code>exturn int i;</code>一样。</p>
+<p>后者是因为initializer list只能对非静态的成员做初始化</p>
+<ul>
+<li>静态成员函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">    public:</span><br><span class="line">    static void f();</span><br><span class="line">    private:</span><br><span class="line">    static int a;</span><br><span class="line">&#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    A::f()//可以直接调用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>静态成员函数只能调用静态成员变量，因为静态成员函数不需要this就可以调用，而且对于静态成员函数this是的确不存在的，而没有this的原因也是我们需要这个静态成员函数在没有对象的时候也能被调用。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/" class="archive-article-date">
-  	<time datetime="2019-11-07T02:15:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++中关于父类函数在子类指针向上造型中overload函数被调用的研究</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/">C++中关于父类函数在子类指针向上造型中overload函数被调用的研究</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -235,8 +314,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
