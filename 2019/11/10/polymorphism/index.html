@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>NgAgo</title>
+  <title>polymorphism | NgAgo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="NgAgo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="多态（polymorphism）学习总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="polymorphism">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;10&#x2F;polymorphism&#x2F;index.html">
 <meta property="og:site_name" content="NgAgo">
+<meta property="og:description" content="多态（polymorphism）学习总结">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-10T15:10:35.822Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="NgAgo" type="application/atom+xml">
@@ -143,16 +146,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-polymorphism" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-polymorphism" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/10/polymorphism/">polymorphism</a>
+    <h1 class="article-title" itemprop="name">
+      polymorphism
     </h1>
   
 
@@ -165,10 +166,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="多态（polymorphism）学习总结"><a href="#多态（polymorphism）学习总结" class="headerlink" title="多态（polymorphism）学习总结"></a>多态（polymorphism）学习总结</h1>
-        
-          <a class="article-more-a" href="/2019/11/10/polymorphism/#more">more >></a>
-        
+        <h1 id="多态（polymorphism）学习总结"><a href="#多态（polymorphism）学习总结" class="headerlink" title="多态（polymorphism）学习总结"></a>多态（polymorphism）学习总结</h1><a id="more"></a>
+<hr>
+<p>结合<strong>Upcast</strong>和<strong>Dynamic binding</strong>可以实现多态性，upcast就是为了让指针的类型可以同意，Dynamic binding 是通过vptr指正实现的，Dynamic binding确保不同类的对象里的函数不受到指针类型的影响调用“错误”的函数。而对于多态我们一般是指 “ 那个<strong>对象指针</strong>具有多态性。” </p>
+<ul>
+<li><strong>Upcast</strong> 利用内存中结构的相似性，让基类的指针指向派生类。</li>
+<li><strong>vptr</strong> 当基类的某个函数是vritual的，从大小上来看，这个类的对象比没有vritual函数相同功能的类的对象要更占内存，原因是在编译时刻，编译器会为每个类生成vritual函数表，然后在对象初始化的时候会给对象一个隐含的vptr指针，这个指针指的地方就是这个vritual函数表，通过这个过程可以确定调用的是那个函数。如果说vptr变了，那么对应的vritual表也变了,vptr是可以变的不是const的，至于为什么这样设计我目前的水平解释不了，我也没有找到相应的参考资料,但是程序里面千万不要这样干，这是很邪恶的事情。</li>
+</ul>
+<p>当然指针可以充当多态的角色，那引用也可以充当多态的角色，因为引用的机制就是指针。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class A,B&#123;vritual f();//有两个类（不符合语法），A是基类，B是A的派生类</span><br><span class="line">&#125;;</span><br><span class="line">B b;</span><br><span class="line">void fun(A &amp;a)&#123;</span><br><span class="line">a.f();</span><br><span class="line">&#125;</span><br><span class="line">void fun(A *p)&#123;</span><br><span class="line">b.f();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面两种调用是等价的。</p>
+<p>补充：</p>
+<p>对象在创建时，由编译器对vptr指针进行初始化；</p>
+<p>只有当对象的构造完全结束后vptr的指向才最终决定下来；</p>
+<p>父类对象的vptr指向父类的虚函数表，子类对象的vptr指向子类的虚函数表。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>@抗争少年-多态之————vptr指针。<a href="https://www.cnblogs.com/yangguang-it/p/6547314.html" target="_blank" rel="noopener">https://www.cnblogs.com/yangguang-it/p/6547314.html</a></p>
+
       
 
       
@@ -179,16 +192,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/10/polymorphism/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/10/polymorphism/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于静态对象和静态成员的学习总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -208,138 +280,14 @@
 
 
 
-
   
-    <article id="post-关于静态对象和静态成员变量的学习总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">关于静态对象和静态成员的学习总结</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2019-11-07T14:16:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="静态学习总结"><a href="#静态学习总结" class="headerlink" title="静态学习总结"></a>静态学习总结</h1>
-        
-          <a class="article-more-a" href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/07/%E5%85%B3%E4%BA%8E%E9%9D%99%E6%80%81%E5%AF%B9%E8%B1%A1%E5%92%8C%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-中关于父类函数在子类指针向上造型中overload函数被调用的研究" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/">C++中关于父类函数在子类指针向上造型中overload函数被调用的研究</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/" class="archive-article-date">
-  	<time datetime="2019-11-07T02:15:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C-中关于父类函数在子类指针向上造型中overload函数被调用的研究"><a href="#C-中关于父类函数在子类指针向上造型中overload函数被调用的研究" class="headerlink" title="C++中关于父类函数在子类指针向上造型中overload函数被调用的研究"></a>C++中关于父类函数在子类指针向上造型中overload函数被调用的研究</h1>
-        
-          <a class="article-more-a" href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/07/C-%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%88%B6%E7%B1%BB%E5%87%BD%E6%95%B0%E5%9C%A8%E5%AD%90%E7%B1%BB%E6%8C%87%E9%92%88%E5%90%91%E4%B8%8A%E9%80%A0%E5%9E%8B%E4%B8%ADoverload%E5%87%BD%E6%95%B0%E8%A2%AB%E8%B0%83%E7%94%A8%E7%9A%84%E7%A0%94%E7%A9%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -362,8 +310,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
